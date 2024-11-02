@@ -262,5 +262,7 @@ input, select, textarea {
 .form-group label{
     padding: 10px;
 }
-  
+.edit-btn,.delete-btn{
+    margin: 10px;
+}
 /* End form */
