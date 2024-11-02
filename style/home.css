@@ -1,0 +1,13 @@
+
+header{
+    height: 70px;
+    width: 100vw;
+    padding: 0 30px;
+    position: fixed;
+    z-index: 100;
+    box-shadow: 1px 1px 15px #a1b6fdd2;
+}
+.logo-section{
+    font-size: 27px;
+    font-weight: 600;
+}
