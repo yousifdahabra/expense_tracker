@@ -82,9 +82,9 @@
         </div>
     </div>
     <div id="form_model" class="modal">
-
         <div class="modal-content">
           <span id="close_form_model" class="close">&times;</span>
+            <input type="text" id="is_edit" value="0">
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="amount">Amount</label>
@@ -104,12 +104,25 @@
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <button id="submit_form" class="view" type="button">Submit</button>
                 </div>
-
             </div>
         </div>
-      
-      </div>
-      
+    </div>
+    <div id="delete_form_model" class="modal">
+        <div class="modal-content">
+            <div class="form align-items-center flex flex-direction-column">
+                <input id="delete_id" type="hidden" value="0"/>
+
+                <div class=" flex flex-wrap-nowrap align-items-start  form-group">
+                    <h2>Are you sure?</h2>
+                </div>
+                <div class=" flex flex-wrap-nowrap align-items-start  form-group">
+                    <button id="close_delete_form_btn" class="view" type="button">Close</button>
+                    <button id="submit_delete_form" class="view" type="button">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <script src="./js/transaction.js"></script>
 </body>

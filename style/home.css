@@ -170,16 +170,6 @@ header {
     border-bottom: 2px solid rgba(0, 20, 151, 0.59);
 }
 
-.view {
-    height: 35px;
-    width: 90px;
-    border-radius: 8px;
-    background-color: #5500cb;
-    color: white;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
-}
 
 .report-body {
     max-width: 1160px;
