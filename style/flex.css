@@ -34,3 +34,11 @@
 .align-items-start{
     align-items:flex-start
 }
+
+.justify-content-space-evenly{
+    justify-content: space-evenly;
+}
+
+.justify-content-space-around{
+    justify-content: space-around;
+}

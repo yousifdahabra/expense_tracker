@@ -1,4 +1,4 @@
-
+/* Start Header  */
 header{
     height: 70px;
     width: 100vw;
@@ -15,6 +15,7 @@ header{
 .fa-bars{
     font-size: 24px !important;
 }
+/* End Header  */
 
 .main-container {
     width: 100vw;
@@ -23,6 +24,7 @@ header{
     z-index: 1;
 }
 
+/* Start nav  */
 .nav {
     min-height: 91vh;
     width: 250px;
@@ -31,7 +33,7 @@ header{
     left: 00;
     box-shadow: 1px 1px 10px #c6bdf8d2;
     overflow: hidden;
-    padding: 30px 0 20px 10px;
+    padding: 30px 0 20px 0;
 }
 .nav-container {
     height: calc(100vh - 70px);
@@ -42,9 +44,65 @@ header{
     transition: all 0.5s ease-in-out;
 }
 .nav-option{
+    width: 250px;
+    height: 60px;
+    padding: 0 30px 0 20px;
     display: flex;
-    gap: 10px;
-    align-items: center
+    gap: 20px;
+    align-items: center;
+    transition: all 0.1s ease-in-out;
+    text-decoration: none;
+    color: black;
+}
+.nav-option:hover {
+    border-left: 5px solid #a2a2a2;
+    background-color: #dadada;
+    cursor: pointer;
 }
 
+.active{
+    background-color: #0c007d;
+    color: white;
+}
 
+.active:hover {
+    border-left: 5px solid #a2a2a2;
+    background-color: #dadada;
+    cursor: pointer;
+    color:black;
+}
+/* End nav */
+
+.main {
+    height: calc(100vh - 70px);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 40px 30px 30px 30px;
+}
+
+.box-container {
+    gap: 50px;
+}
+
+.box {
+    height: 130px;
+    width: 230px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px #a2a2a2;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    background-color: white;
+}
+
+.box:hover {
+    transform: scale(1.08);
+}
+
+.box .fa{
+    font-size: 30px !important;
+}
+.topic{
+    gap:10px
+}
