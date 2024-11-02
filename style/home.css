@@ -10,4 +10,41 @@ header{
 .logo-section{
     font-size: 27px;
     font-weight: 600;
+    gap: 10px;
 }
+.fa-bars{
+    font-size: 24px !important;
+}
+
+.main-container {
+    width: 100vw;
+    position: relative;
+    top: 70px;
+    z-index: 1;
+}
+
+.nav {
+    min-height: 91vh;
+    width: 250px;
+    position: absolute;
+    top: 0px;
+    left: 00;
+    box-shadow: 1px 1px 10px #c6bdf8d2;
+    overflow: hidden;
+    padding: 30px 0 20px 10px;
+}
+.nav-container {
+    height: calc(100vh - 70px);
+    width: 250px;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    transition: all 0.5s ease-in-out;
+}
+.nav-option{
+    display: flex;
+    gap: 10px;
+    align-items: center
+}
+
+
