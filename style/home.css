@@ -1,5 +1,5 @@
 /* Start Header  */
-header{
+header {
     height: 70px;
     width: 100vw;
     padding: 0 30px;
@@ -7,14 +7,17 @@ header{
     z-index: 100;
     box-shadow: 1px 1px 15px #a1b6fdd2;
 }
-.logo-section{
+
+.logo-section {
     font-size: 27px;
     font-weight: 600;
     gap: 10px;
 }
-.fa-bars{
+
+.fa-bars {
     font-size: 24px !important;
 }
+
 /* End Header  */
 
 .main-container {
@@ -35,6 +38,7 @@ header{
     overflow: hidden;
     padding: 30px 0 20px 0;
 }
+
 .nav-container {
     height: calc(100vh - 70px);
     width: 250px;
@@ -43,7 +47,8 @@ header{
     overflow-x: hidden;
     transition: all 0.5s ease-in-out;
 }
-.nav-option{
+
+.nav-option {
     width: 250px;
     height: 60px;
     padding: 0 30px 0 20px;
@@ -54,13 +59,14 @@ header{
     text-decoration: none;
     color: black;
 }
+
 .nav-option:hover {
     border-left: 5px solid #a2a2a2;
     background-color: #dadada;
     cursor: pointer;
 }
 
-.active{
+.active {
     background-color: #0c007d;
     color: white;
 }
@@ -69,8 +75,9 @@ header{
     border-left: 5px solid #a2a2a2;
     background-color: #dadada;
     cursor: pointer;
-    color:black;
+    color: black;
 }
+
 /* End nav */
 
 .main {
@@ -81,6 +88,7 @@ header{
     padding: 40px 30px 30px 30px;
 }
 
+/* Start box */
 .box-container {
     gap: 50px;
 }
@@ -100,9 +108,82 @@ header{
     transform: scale(1.08);
 }
 
-.box .fa{
+.box .fa {
     font-size: 30px !important;
 }
-.topic{
-    gap:10px
+
+.topic {
+    gap: 10px
+}
+
+/* End box */
+
+.report-container {
+    min-height: 300px;
+    max-width: 1200px;
+    margin: 70px auto 0px auto;
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 3px 3px 10px rgb(188, 188, 188);
+    padding: 0px 20px 20px 20px;
+}
+
+.report-header {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 10px 20px;
+    border-bottom: 2px solid rgba(0, 20, 151, 0.59);
+}
+
+.view {
+    height: 35px;
+    width: 90px;
+    border-radius: 8px;
+    background-color: #5500cb;
+    color: white;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.report-body {
+    max-width: 1160px;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.report-topic-heading {
+    width: 100%;
+    margin-top: 15px;
+
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+table th,
+table td {
+    padding: .625em;
+    text-align: center;
+}
+
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
 }
