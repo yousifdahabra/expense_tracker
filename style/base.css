@@ -10,7 +10,7 @@ body{
     overflow-x: hidden;  
 }
 .view {
-    height: 35px;
+    height: 40px;
     width: 90px;
     border-radius: 8px;
     background-color: #5500cb;
@@ -24,4 +24,8 @@ body{
     background-color: #dadada;
     cursor: pointer;
     color: black;
+}
+
+.hidden{
+    display: none;
 }

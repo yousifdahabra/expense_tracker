@@ -33,7 +33,7 @@
             <div class="flex justify-content-evenly align-items-center justify-content-space-around flex-wrap box-container ">
                 <div class="flex align-items-center justify-content-space-between box ">
                     <div class="topic">
-                        <h2 class="topic-heading">0</h2>
+                        <h2 id="incomes" class="topic-heading ">0</h2>
                         <h2 class="topic-title">Incomes</h2>
                     </div>
                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -41,7 +41,7 @@
 
                 <div class="flex align-items-center justify-content-space-between box ">
                     <div class="topic">
-                        <h2 class="topic-heading">0</h2>
+                        <h2 id="expenses" class="topic-heading">0</h2>
                         <h2 class="topic-title">Expenses</h2>
                     </div>
                     <i class="fa fa-minus" aria-hidden="true"></i>
@@ -49,7 +49,7 @@
 
                 <div class="flex align-items-center justify-content-space-between box ">
                     <div class="topic">
-                        <h2 class="topic-heading">0</h2>
+                        <h2 id="balance" class="topic-heading">0</h2>
                         <h2 class="topic-title">Balance</h2>
                     </div>
                     <i class="fa fa-balance-scale" aria-hidden="true"></i>
@@ -59,7 +59,11 @@
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Articles">Tracking Report</h1>
-                    <button id="transaction_btn" class="view">Add</button>
+                    <div class="report-btn flex flex-wrap align-content-center justify-content-center align-items-cente">
+                        <button id="transaction_btn" class="view">Add</button>
+                        <button id="only_expenses_btn" class="view">Only Expenses</button>
+                        <button id="only_incomes_btn" class="view">Only Incomes</button>    
+                    </div>
                 </div>
                 <div class="report-body">
                     <table>
@@ -67,6 +71,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Transction Amount</th>
+                                <th>Balance</th>
                                 <th>Transction typr</th>
                                 <th>Date</th>
                                 <th>Action</th>
@@ -83,7 +88,6 @@
     </div>
     <div id="form_model" class="modal">
         <div class="modal-content">
-          <span id="close_form_model" class="close">&times;</span>
             <input type="hidden" id="is_edit" value="0">
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
@@ -103,6 +107,7 @@
                 </div>
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <button id="submit_form" class="view" type="button">Submit</button>
+                    <button id="close_form_model" class="view" type="button">Close</button>
                 </div>
             </div>
         </div>

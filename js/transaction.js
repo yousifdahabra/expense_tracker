@@ -1,13 +1,22 @@
-const popup_btn = document.getElementById("transaction_btn")
-const close_form_model = document.getElementById("close_form_model")
-const form_model = document.getElementById("form_model")
-const submit_form = document.getElementById("submit_form")
-const table_body = document.getElementById("table_body")
+const popup_btn = document.getElementById("transaction_btn");
+const close_form_model = document.getElementById("close_form_model");
+const form_model = document.getElementById("form_model");
+const submit_form = document.getElementById("submit_form");
+const table_body = document.getElementById("table_body");
 
-const delete_form_model = document.getElementById("delete_form_model")
-const close_delete_form_btn = document.getElementById("close_delete_form_btn")
-const submit_delete_form = document.getElementById("submit_delete_form")
-const is_edit = document.getElementById("is_edit")
+const delete_form_model = document.getElementById("delete_form_model");
+const close_delete_form_btn = document.getElementById("close_delete_form_btn");
+const submit_delete_form = document.getElementById("submit_delete_form");
+const is_edit = document.getElementById("is_edit");
+
+const incomes_element = document.getElementById("incomes");
+const expenses_element = document.getElementById("expenses");
+const balance_element = document.getElementById("balance");
+
+const only_incomes_btn = document.getElementById("only_incomes_btn");
+const only_expenses_btn = document.getElementById("only_expenses_btn");
+let click_incomes_btn = 0
+let click_expenses_btn = 0
 
 function delete_table(){
     const deletes_btn = document.querySelectorAll(".delete-btn");
@@ -44,16 +53,31 @@ function empty_form(){
     document.getElementById("amount").value = 0;
     document.getElementById("date").value = '';
     document.getElementById("transaction_type").value = 'incomes';
-
 }
-function update_table(){
+function update_table(ignore = ''){
 
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
     let body = ``;
+    let total_incomes = 0;
+    let total_expenses = 0;
+    let total_balance = 0;
     transactions.forEach((transaction, index) => {
-        body+=`<tr>
+        if(transaction.transaction_type == ignore ){
+            return;
+        }
+
+        transaction.amount = parseFloat(transaction.amount);
+        if(transaction.transaction_type == 'expenses'){
+            total_expenses+=transaction.amount;
+            total_balance -= transaction.amount;
+        }else{
+            total_incomes+=transaction.amount;
+            total_balance += transaction.amount;
+        }
+        body+=`<tr class="${transaction.transaction_type}_style" >
         <td>${transaction.id}</td>
-        <td>${transaction.amount}</td>
+        <td>${transaction.amount} $</td>
+        <td>${total_balance} $</td>
         <td> ${transaction.transaction_type}</td>
         <td>${transaction.date}</td>
         <td><button data-id="${transaction.id}" data-transaction_type="${transaction.transaction_type}" data-date="${transaction.date}" data-amount="${transaction.amount}" class="edit-btn view">Edit</button>   <button data-id="${transaction.id}" class="delete-btn view"  >Delete</button></td>
@@ -61,6 +85,9 @@ function update_table(){
         `;
     });
     table_body.innerHTML = body
+    incomes_element.innerHTML =total_incomes+" $";
+    expenses_element.innerHTML = total_expenses+" $";
+    balance_element.innerHTML = total_balance+" $";
 
     empty_form();
     delete_table();
@@ -121,6 +148,32 @@ submit_delete_form.addEventListener("click", () => {
     update_table();
     
 });
+only_expenses_btn.addEventListener("click",()=>{
+    if(click_expenses_btn == 0){
+        click_expenses_btn = 1;
+        only_expenses_btn.innerHTML = "Show All"
+
+        update_table('incomes')
+
+    }else{
+        only_expenses_btn.innerHTML = "Only Expenses"
+
+        click_expenses_btn = 0;
+        update_table()
+    }
+})
+only_incomes_btn.addEventListener("click",()=>{
+    if(click_incomes_btn == 0){
+        click_incomes_btn = 1;
+        only_incomes_btn.innerHTML = "Show All"
+        update_table('expenses')
+
+    }else{
+        click_incomes_btn = 0;
+        only_incomes_btn.innerHTML = "Only Incomes"
+        update_table()
+    }
+})
 
 
 update_table()
