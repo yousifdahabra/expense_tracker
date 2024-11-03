@@ -19,6 +19,9 @@ const only_expenses_btn = document.getElementById("only_expenses_btn");
 const from_date = document.getElementById("from_date");
 const to_date = document.getElementById("to_date");
 
+const filter_note = document.getElementById("filter_note");
+
+
 let click_incomes_btn = 0
 let click_expenses_btn = 0
 
@@ -61,7 +64,7 @@ const empty_form = () =>{
     document.getElementById("note").value = '';
     document.getElementById("transaction_type").value = 'incomes';
 }
-const update_table = (ignore = '',from_date='',to_date='',note='') =>{
+const update_table = (ignore = '',from_date='',to_date='',filter_note='') =>{
     
     if(from_date == '' && to_date != '') from_date = new Date().getDate();
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -74,13 +77,13 @@ const update_table = (ignore = '',from_date='',to_date='',note='') =>{
         if(from_date != '' && to_date == '') to_date = new Date().toJSON().slice(0, 10);
         if(from_date == '' && to_date != '') from_date = new Date().toJSON().slice(0, 10);
         if(from_date != '' && to_date != ''){
-            if(transaction.date >= from_date && transaction.date <= to_date){
-                
-            }else return
+            if(transaction.date >= from_date && transaction.date <= to_date){}
+            else return
         }
-        console.log("Update")
-        console.log(from_date)
-        console.log(to_date)
+        if(filter_note != ''){
+            if(transaction.note.search(filter_note) != -1){}
+            else return
+        }
         transaction.amount = parseFloat(transaction.amount);
         if(transaction.transaction_type == 'expenses'){
             total_expenses+=transaction.amount;
@@ -190,6 +193,11 @@ to_date.addEventListener("change",()=>{
     console.log('to_date.value',to_date.value)
 
     update_table('',from_date.value,to_date.value)
+})
+filter_note.addEventListener("input",()=>{
+    console.log('filter_note',filter_note.value)
+
+    update_table('','','',filter_note.value)
 })
 
 
