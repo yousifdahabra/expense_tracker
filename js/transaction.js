@@ -13,18 +13,24 @@ const incomes_element = document.getElementById("incomes");
 const expenses_element = document.getElementById("expenses");
 const balance_element = document.getElementById("balance");
 
-const only_incomes_btn = document.getElementById("only_incomes_btn");
-const only_expenses_btn = document.getElementById("only_expenses_btn");
-
 const from_date = document.getElementById("from_date");
 const to_date = document.getElementById("to_date");
 
 const filter_note = document.getElementById("filter_note");
+const price_filter = document.getElementById("price_filter");
+const type_filter = document.getElementById("type_filter");
 
 
 let click_incomes_btn = 0
 let click_expenses_btn = 0
-
+let filter_options = {
+    from_date:'',
+    to_date:'',
+    to_date:'',
+    filter_note:'',
+    price_filter:'',
+    ignore:'',
+};
 const delete_table_event  = () =>{
     const deletes_btn = document.querySelectorAll(".delete-btn");
     deletes_btn.forEach((delete_btn) => {
@@ -64,24 +70,36 @@ const empty_form = () =>{
     document.getElementById("note").value = '';
     document.getElementById("transaction_type").value = 'incomes';
 }
-const update_table = (ignore = '',from_date='',to_date='',filter_note='',price_filter = '') =>{
+// const update_table = (ignore = '',from_date='',to_date='',filter_note='',price_filter = '') =>{
+const update_table = () =>{
     
-    if(from_date == '' && to_date != '') from_date = new Date().getDate();
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    if(filter_options['price_filter'] != ''){
+        if(filter_options['price_filter'] == 'ascending'){
+            transactions.sort((a, b) => a.amount - b.amount)
+        }else if(filter_options['price_filter'] == 'descending'){
+            transactions.sort((a, b) => b.amount - a.amount)
+        }
+    }
+
     let body = ``;
     let total_incomes = 0;
     let total_expenses = 0;
     let total_balance = 0;
     transactions.forEach((transaction, index) => {
-        if(transaction.transaction_type == ignore ) return;
-        if(from_date != '' && to_date == '') to_date = new Date().toJSON().slice(0, 10);
-        if(from_date == '' && to_date != '') from_date = new Date().toJSON().slice(0, 10);
-        if(from_date != '' && to_date != ''){
-            if(transaction.date >= from_date && transaction.date <= to_date){}
+        if(filter_options['ignore']  != ''){
+            if(transaction.transaction_type == filter_options['ignore'] ){}
+            else return;
+        }
+
+        if(filter_options['from_date'] != '' && filter_options['to_date'] == '') filter_options['to_date'] = new Date().toJSON().slice(0, 10);
+        if(filter_options['from_date'] == '' && filter_options['to_date'] != '') filter_options['from_date'] = new Date().toJSON().slice(0, 10);
+        if(filter_options['from_date'] != '' && filter_options['to_date'] != ''){
+            if(transaction.date >= filter_options['from_date'] && transaction.date <= filter_options['to_date']){}
             else return
         }
-        if(filter_note != ''){
-            if(transaction.note.search(filter_note) != -1){}
+        if(filter_options['filter_note'] != ''){
+            if(transaction.note.search(filter_options['filter_note']) != -1){}
             else return
         }
         transaction.amount = parseFloat(transaction.amount);
@@ -173,31 +191,28 @@ submit_delete_form.addEventListener("click", () => {
     delete_form_model.style.display = "none";
 });
 
-only_expenses_btn.addEventListener("click",()=>{
-    click_expenses_btn = 1- click_expenses_btn;
-    only_expenses_btn.innerHTML= click_incomes_btn === 1 ? "Show All":"Only Expenses";
-    update_table(click_expenses_btn === 1 ? 'incomes' : '')
-})
-
-only_incomes_btn.addEventListener("click",()=>{
-    click_incomes_btn = 1 - click_incomes_btn;
-    only_incomes_btn.innerHTML= click_incomes_btn === 1 ? "Show All":"Only Incomes";
-    update_table(click_incomes_btn === 1 ?'expenses' : '')
-})
 
 from_date.addEventListener("change",()=>{
-    console.log('from_date.value',from_date.value)
-    update_table('',from_date.value,to_date.value)
+    filter_options['from_date'] = from_date.value;
+    filter_options['to_date'] = to_date.value;
+    update_table()
 })
 to_date.addEventListener("change",()=>{
-    console.log('to_date.value',to_date.value)
-
-    update_table('',from_date.value,to_date.value)
+    filter_options['from_date'] = from_date.value;
+    filter_options['to_date'] = to_date.value;
+    update_table()
 })
 filter_note.addEventListener("input",()=>{
-    console.log('filter_note',filter_note.value)
-
-    update_table('','','',filter_note.value)
+    filter_options['filter_note'] = filter_note.value;
+    update_table()
+})
+price_filter.addEventListener("change",()=>{
+    filter_options['price_filter'] = price_filter.value;
+    update_table(filter_options)
+})
+type_filter.addEventListener("change",()=>{
+    filter_options['ignore'] = type_filter.value;
+    update_table()
 })
 
 

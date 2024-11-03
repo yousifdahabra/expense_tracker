@@ -59,15 +59,34 @@
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Articles">Tracking Report</h1>
+                    <div class="report-btn flex flex-wrap align-content-center justify-content-center align-items-center">
+                        <button id="transaction_btn" class="view">Add</button>
+                    </div>
+
                 </div>
                 <div class="report-body">
-                    <div class="report-btn flex flex-wrap align-content-center justify-content-center align-items-cente">
-                        <button id="transaction_btn" class="view">Add</button>
-                        <button id="only_expenses_btn" class="view">Only Expenses</button>
-                        <button id="only_incomes_btn" class="view">Only Incomes</button>  
-                        <input id="from_date" type="date">  
-                        <input id="to_date" type="date">  
-                        <input id="filter_note" type="text">  
+                    <div class="report-btn flex flex-wrap align-content-center justify-content-center align-items-flex-end">
+                        <select id="type_filter">
+                            <option value="">Select Transction Type</option>
+                            <option value="expenses">Expenses</option>
+                            <option value="incomes">Incomes</option>
+                        </select>
+                        <div class="flex flex-direction-column flex-wrap align-content-center justify-content-center align-items-center">
+                            <label for="from_date">From Date</label>
+                            <input id="from_date" type="date" placeholder="from date">  
+                        </div>
+                        <div class="flex flex-direction-column flex-wrap align-content-center justify-content-center align-items-center">
+                            <label for="to_date">To Date</label>
+                            <input id="to_date" type="date" placeholder="to date">  
+                        </div>
+
+                        <input id="filter_note" type="text" placeholder="Search by Note">  
+                        <select id="price_filter">
+                            <option value="">Select Price Filter</option>
+                            <option value="ascending">From min to max</option>
+                            <option value="descending">From max to min</option>
+                        </select>
+    
                     </div>
 
                     <table>
