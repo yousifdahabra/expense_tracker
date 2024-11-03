@@ -70,7 +70,7 @@ const empty_form = () =>{
     document.getElementById("note").value = '';
     document.getElementById("transaction_type").value = 'incomes';
 }
-// const update_table = (ignore = '',from_date='',to_date='',filter_note='',price_filter = '') =>{
+
 const update_table = () =>{
     
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -134,86 +134,5 @@ const update_table = () =>{
     delete_table_event();
     edit_table_event();
 }
-
-popup_btn.addEventListener("click",()=>{
-    form_model.style.display = "block";
-})
-close_form_model.addEventListener("click",()=>{
-    form_model.style.display = "none";
-    empty_form();
-})
-
-close_delete_form_btn.addEventListener("click",()=>{
-    delete_form_model.style.display = "none";
-    empty_form();
-})
-
-submit_form.addEventListener("click", () => {
-    const is_edit = document.getElementById("is_edit").value
-    const amount = document.getElementById("amount").value || 0;
-    const note = document.getElementById("note").value || '';
-    const date = document.getElementById("date").value || new Date().getDate();
-    const transaction_type = document.getElementById("transaction_type").value;
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-
-    if(is_edit == 0){
-        const id = Math.random().toString(16).slice(2);
-        const data = 
-            {"id": id,"amount": amount,"date": date,"transaction_type": transaction_type,"note": note}
-        ;
-        transactions.push(data);    
-
-    }else{
-        const data = 
-            {"id": is_edit,"amount": amount,"date": date,"transaction_type": transaction_type,"note": note}
-        ;
-        transactions.forEach((transaction, index) => {
-            if(transaction.id == is_edit){
-                transactions.splice(index, 1,data);
-            }
-        });
-    }
-    form_model.style.display = "none";
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-    update_table()
-});
-
-submit_delete_form.addEventListener("click", () => {
-    const delete_id_code = document.getElementById("delete_id").value || 0;
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    transactions.forEach((transaction, index) => {
-        if(transaction.id == delete_id_code){
-            transactions.splice(index, 1);
-        }
-    });
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-    update_table();
-    delete_form_model.style.display = "none";
-});
-
-
-from_date.addEventListener("change",()=>{
-    filter_options['from_date'] = from_date.value;
-    filter_options['to_date'] = to_date.value;
-    update_table()
-})
-to_date.addEventListener("change",()=>{
-    filter_options['from_date'] = from_date.value;
-    filter_options['to_date'] = to_date.value;
-    update_table()
-})
-filter_note.addEventListener("input",()=>{
-    filter_options['filter_note'] = filter_note.value;
-    update_table()
-})
-price_filter.addEventListener("change",()=>{
-    filter_options['price_filter'] = price_filter.value;
-    update_table(filter_options)
-})
-type_filter.addEventListener("change",()=>{
-    filter_options['ignore'] = type_filter.value;
-    update_table()
-})
-
 
 update_table()
