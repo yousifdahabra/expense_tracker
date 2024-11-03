@@ -64,7 +64,7 @@ const empty_form = () =>{
     document.getElementById("note").value = '';
     document.getElementById("transaction_type").value = 'incomes';
 }
-const update_table = (ignore = '',from_date='',to_date='',filter_note='') =>{
+const update_table = (ignore = '',from_date='',to_date='',filter_note='',price_filter = '') =>{
     
     if(from_date == '' && to_date != '') from_date = new Date().getDate();
     const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
