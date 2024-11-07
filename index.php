@@ -24,7 +24,7 @@
                 <div class="nav-options">
                     <a href="#" class="nav-option active">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
-                        <h3> Dashboard</h3>
+                        <h3> Login</h3>
                     </a>
                 </div>
             </nav>
@@ -110,7 +110,7 @@
             </div>
         </div>
     </div>
-    <div id="form_model" class="modal">
+    <div id="form_model" class="login-model">
         <div class="modal-content">
             <input type="hidden" id="is_edit" value="0">
             <div class="form flex flex-direction-column">
@@ -158,8 +158,8 @@
     </div>
 
 
-    <script src="./js/transaction.js"></script>
-    <script src="./js/event.js"></script>
-    <script src="./js/filter.js"></script>
+    <script src="./js/dashboard/transaction.js"></script>
+    <script src="./js/dashboard/event.js"></script>
+    <script src="./js/dashboard/filter.js"></script>
 </body>
 </html>
