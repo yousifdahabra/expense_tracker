@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="./style/color.css">
-    <link rel="stylesheet" href="./style/base.css">
-    <link rel="stylesheet" href="./style/flex.css">
-    <link rel="stylesheet" href="./style/home.css">
+    <link rel="stylesheet" href="./style/base/color.css">
+    <link rel="stylesheet" href="./style/base/base.css">
+    <link rel="stylesheet" href="./style/base/flex.css">
+    <link rel="stylesheet" href="./style/pages/dashboard.css">
+    <link rel="stylesheet" href="./style/index.css">
     <link rel="stylesheet" href="./style/fontawesome/css/font-awesome.min.css">
 </head>
 <body class="main-background-color">
@@ -111,7 +112,7 @@
         </div>
     </div>
     <div id="form_model" class="login-model">
-        <div class="modal-content">
+        <div class="login-modal-content">
             <input type="hidden" id="is_edit" value="0">
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">

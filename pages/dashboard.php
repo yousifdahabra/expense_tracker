@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../style/color.css">
-    <link rel="stylesheet" href="../style/base.css">
-    <link rel="stylesheet" href="../style/flex.css">
-    <link rel="stylesheet" href="../style/home.css">
+    <link rel="stylesheet" href="../style/base/color.css">
+    <link rel="stylesheet" href="../style/base/base.css">
+    <link rel="stylesheet" href="../style/base/flex.css">
+    <link rel="stylesheet" href="../style/pages/dashboard.css">
     <link rel="stylesheet" href="../style/fontawesome/css/font-awesome.min.css">
 </head>
 <body class="main-background-color">
