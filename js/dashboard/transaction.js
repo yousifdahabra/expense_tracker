@@ -7,7 +7,7 @@ const table_body = document.getElementById("table_body");
 const delete_form_model = document.getElementById("delete_form_model");
 const close_delete_form_btn = document.getElementById("close_delete_form_btn");
 const submit_delete_form = document.getElementById("submit_delete_form");
-const transaction_id  = document.getElementById("transaction_id ");
+const transaction_id  = document.getElementById("transaction_id");
 
 const incomes_element = document.getElementById("incomes");
 const expenses_element = document.getElementById("expenses");
@@ -64,7 +64,7 @@ const edit_table_event = () =>{
 }
 
 const empty_form = () =>{
-    document.getElementById("transaction_id ").value = 0
+    document.getElementById("transaction_id").value = 0
     document.getElementById("amount").value = 0;
     document.getElementById("date").value = '';
     document.getElementById("note").value = '';
@@ -94,7 +94,6 @@ const update_table_wait = (transactions) =>{
     let total_incomes = 0;
     let total_expenses = 0;
     let total_balance = 0;
-    console.log(transactions)
     transactions.forEach((transaction, index) => {
         if(filter_options['ignore']  != ''){
             if(transaction.transaction_type == filter_options['ignore'] ){}

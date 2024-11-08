@@ -43,9 +43,9 @@ if(isset($data['submit_transaction_form'])   ){
     $date = $data['date'];
     $transaction_type = $data['transaction_type'];
     $note = $data['note'];
-    $user_login_id = $_SESSION['login_id'];
-
-    if($data['transaction_id'] == 0){
+    $user_login_id = isset($_SESSION['login_id']) ? $_SESSION['login_id'] : 1;
+    $transaction_id= $data['transaction_id'];
+    if($transaction_id == 0){
         $insert_transaction = $conection->prepare("insert into transactions_tbl(amount,date,transaction_type,note,user_login_id) values('$amount','$date','$transaction_type','$note','$user_login_id') ");
         $insert_transaction->execute();
 
@@ -57,7 +57,7 @@ if(isset($data['submit_transaction_form'])   ){
 
         
     }else{
-        $update_transaction = $conection->prepare("update transactions_tbl set amount = '$amount',date='$date',transaction_type='$transaction_type',note='$note' where code='$code' ");
+        $update_transaction = $conection->prepare("update transactions_tbl set amount = '$amount',date='$date',transaction_type='$transaction_type',note='$note' where transaction_id='$transaction_id' ");
         $update_transaction->execute();
 
         $response = [

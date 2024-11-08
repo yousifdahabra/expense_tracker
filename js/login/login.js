@@ -14,9 +14,6 @@ const post_login = async () => {
         if(response.data.message === 'true'){
             window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
         }
-        }).catch(function (error) {
-            console.log('error')
-            console.log(error)
         });
 }
 

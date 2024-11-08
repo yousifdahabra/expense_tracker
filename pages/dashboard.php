@@ -114,7 +114,7 @@
     </div>
     <div id="form_model" class="modal">
         <div class="modal-content">
-            <input type="hidden" id="transaction_id " value="0">
+            <input type="hidden" id="transaction_id" value="0">
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="amount">Amount</label>
