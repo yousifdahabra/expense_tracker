@@ -1,14 +1,10 @@
-const add_trans = async () => {
+const add_transaction = async (data) => {
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
     const post_method = await axios({
         method: 'post',
         url: 'http://localhost/expense_tracker/server/functions.php',
-        data: {
-            submit_login_form: 'true',
-            username:username,
-            password:password,
-        }
+        data: data
       }) .then(function (response) {
         if(response.data.message === 'true'){
             window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";

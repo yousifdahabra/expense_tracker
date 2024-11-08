@@ -18,27 +18,21 @@ submit_form.addEventListener("click", () => {
     const note = document.getElementById("note").value || '';
     const date = document.getElementById("date").value || new Date().getDate();
     const transaction_type = document.getElementById("transaction_type").value;
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
     if(is_edit == 0){
         const id = Math.random().toString(16).slice(2);
         const data = 
-            {"id": id,"amount": amount,"date": date,"transaction_type": transaction_type,"note": note}
+            {"submit_transaction_form": 'true',"is_edit": is_edit,"code": id,"amount": amount,"date": date,"transaction_type": transaction_type,"note": note}
         ;
-        transactions.push(data);    
+        add_transaction(data);
 
     }else{
         const data = 
             {"id": is_edit,"amount": amount,"date": date,"transaction_type": transaction_type,"note": note}
         ;
-        transactions.forEach((transaction, index) => {
-            if(transaction.id == is_edit){
-                transactions.splice(index, 1,data);
-            }
-        });
+
     }
     form_model.style.display = "none";
-    localStorage.setItem('transactions', JSON.stringify(transactions));
     update_table()
 });
 
