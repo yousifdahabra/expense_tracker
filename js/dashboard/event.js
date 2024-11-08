@@ -33,3 +33,9 @@ submit_delete_form.addEventListener("click",async () => {
     await update_table();
     delete_form_model.style.display = "none";
 });
+logout_btn.addEventListener("click",async () => {
+    const transaction_id = document.getElementById("delete_id").value || 0;
+    await delete_transaction(transaction_id);
+    await update_table();
+    delete_form_model.style.display = "none";
+});

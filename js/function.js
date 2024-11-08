@@ -60,6 +60,25 @@ const check_login = async () => {
         return [];  
     }
 }
+const check_logout = async () => {
+
+    try{
+        const post_method = await axios({
+            method: 'post',
+            url: 'http://localhost/expense_tracker/server/functions.php',
+            data: {
+                check_logout: 'true',
+            }
+          })  
+          
+          if(post_method.data.message == 0){
+            window.location = "/expense_tracker"
+          }
+  
+    }catch (error) {
+        return [];  
+    }
+}
 
 check_login()
 

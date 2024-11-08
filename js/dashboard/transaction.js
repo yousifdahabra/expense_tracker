@@ -21,6 +21,8 @@ const price_filter = document.getElementById("price_filter");
 const type_filter = document.getElementById("type_filter");
 
 
+const logout_btn = document.getElementById("logout_btn");
+
 let click_incomes_btn = 0
 let click_expenses_btn = 0
 let filter_options = {
