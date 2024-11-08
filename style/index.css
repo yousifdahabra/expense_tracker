@@ -15,3 +15,9 @@
     border: 1px solid #888;
     width: 40vh;
 }
+.displaced{
+    border-left: 5px solid #a2a2a2 !important;
+    background-color: #dadada !important;
+    cursor: pointer !important;
+    color: black !important;
+}
