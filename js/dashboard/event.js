@@ -34,5 +34,6 @@ submit_delete_form.addEventListener("click",async () => {
     delete_form_model.style.display = "none";
 });
 logout_btn.addEventListener("click",async () => {
+    console.log('clicked logout')
     await check_logout();
 });

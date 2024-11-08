@@ -71,7 +71,7 @@ const check_logout = async () => {
             }
           })  
           
-          if(post_method.data.message == 0){
+          if(post_method.data.states == 1){
             window.location = "/expense_tracker"
           }
   
