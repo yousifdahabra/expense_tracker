@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../style/base/flex.css">
     <link rel="stylesheet" href="../style/pages/dashboard.css">
     <link rel="stylesheet" href="../style/fontawesome/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body class="main-background-color">
 

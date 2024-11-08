@@ -71,10 +71,15 @@ const empty_form = () =>{
     document.getElementById("transaction_type").value = 'incomes';
 }
 
-const update_table = () =>{
+const update_table = async  () =>{
     
-    const transactions = get_transaction() || [];
+    const transactions = await get_transaction() ;
+    await update_table_wait(transactions)
+}
 
+const update_table_wait = (transactions) =>{
+    console.log('transactions')
+    console.log(transactions)
 
     if(filter_options['price_filter'] != ''){
         if(filter_options['price_filter'] == 'ascending'){
@@ -88,6 +93,7 @@ const update_table = () =>{
     let total_incomes = 0;
     let total_expenses = 0;
     let total_balance = 0;
+    console.log(transactions)
     transactions.forEach((transaction, index) => {
         if(filter_options['ignore']  != ''){
             if(transaction.transaction_type == filter_options['ignore'] ){}
@@ -114,7 +120,7 @@ const update_table = () =>{
         }
         body+=`
         <tr class="${transaction.transaction_type}_style" >
-            <td>${transaction.id}</td>
+            <td>${transaction.code}</td>
             <td>${transaction.amount} $</td>
             <td>${total_balance} $</td>
             <td>${transaction.transaction_type}</td>
@@ -135,6 +141,6 @@ const update_table = () =>{
     empty_form();
     delete_table_event();
     edit_table_event();
-}
 
+}
 update_table()

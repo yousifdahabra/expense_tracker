@@ -68,10 +68,10 @@ if(isset($data['get_transactions'])){
 
     
 
-        $get_transactions_query = $conection->prepare("Select * from transactions_tbl ");
+        $get_transactions_query = $conection->prepare("SELECT * FROM `transactions_tbl` ");
         $get_transactions_query->execute();
         $get_transactions = $get_transactions_query->get_result();
-        if($get_transactions->num_rows == 0){
+        if($get_transactions->num_rows > 0){
             $transaction_array = [];
             while($transaction = $get_transactions->fetch_assoc()){
                 $transaction_array[] = $transaction;
@@ -84,7 +84,10 @@ if(isset($data['get_transactions'])){
     
         }else{
             $response = [
-                "message" => "empty transaction"
+                "message" => "empty transaction2",
+                "data" => $data,
+                "get_transactions" => $get_transactions,
+                "get_transactions_query" => $get_transactions_query,
             ];
             echo  json_encode($response)  ;
 
