@@ -4,10 +4,7 @@ const add_transaction = async (data) => {
         method: 'post',
         url: 'http://localhost/expense_tracker/server/functions.php',
         data: data
-      }) .then(function (response) {
-
-        }).catch(function (error) {
-        });
+    });
 }
 const get_transaction = async (transaction_id = 0) => {
 
@@ -44,4 +41,25 @@ const delete_transaction = async (transaction_id = 0) => {
         return [];  
     }
 }
+const check_login = async () => {
+
+    try{
+        const post_method = await axios({
+            method: 'post',
+            url: 'http://localhost/expense_tracker/server/functions.php',
+            data: {
+                check_login: 'true',
+            }
+          })  
+          
+          if(post_method.data.message == 0){
+            window.location = "/expense_tracker"
+          }
+  
+    }catch (error) {
+        return [];  
+    }
+}
+
+check_login()
 

@@ -10,11 +10,15 @@ const post_login = async () => {
             username:username,
             password:password,
         }
-      }) .then(function (response) {
-        if(response.data.message === 'true'){
+    }).then(function (response) {
+        console.log('response')
+        console.log(response)
+        if(response.data.states === '1'){
             window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
-        }
-        });
+        }else[
+            alert('wrong password')
+        ]
+    });
 }
 
 submit_login_form.addEventListener("click",()=>{
