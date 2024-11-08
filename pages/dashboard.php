@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    <div id="form_model" class="modal">
+    <div id="form_model" class="modal hidden">
         <div class="modal-content">
             <input type="hidden" id="transaction_id" value="0">
             <div class="form flex flex-direction-column">
@@ -148,9 +148,9 @@
             </div>
         </div>
     </div>
-    <div id="delete_form_model" class="modal">
+    <div id="delete_form_model" class="modal hidden">
         <div class="modal-content">
-            <div class="form align-items-center flex flex-direction-column">
+            <div class=" form align-items-center flex flex-direction-column ">
                 <input id="delete_id" type="hidden" value="0"/>
 
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">

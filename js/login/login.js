@@ -11,8 +11,6 @@ const post_login = async () => {
             password:password,
         }
     }).then(function (response) {
-        console.log('response')
-        console.log(response)
         if(response.data.states === '1'){
             window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
         }else[

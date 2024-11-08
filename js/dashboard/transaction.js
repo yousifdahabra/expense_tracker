@@ -38,7 +38,9 @@ const delete_table_event  = () =>{
     deletes_btn.forEach((delete_btn) => {
         delete_btn.addEventListener("click", (event) => {
             const id = event.target.getAttribute('data-id');
-            delete_form_model.style.display = "block";
+            delete_form_model.classList.add('show')
+            delete_form_model.classList.remove('hidden')
+
             document.getElementById("delete_id").value = id
         });
     });
@@ -60,7 +62,9 @@ const edit_table_event = () =>{
             document.getElementById("note").value = note;
             document.getElementById("transaction_type").value = transaction_type ;
 
-            form_model.style.display = "block";
+            form_model.classList.add('show')
+            form_model.classList.remove('hidden')
+        
         });
     });
 }
