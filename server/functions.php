@@ -144,5 +144,12 @@ if(isset($data['check_login'])){
     }
 
 }
+if(isset($data['check_logout'])){
+    session_destroy();
+    $response = [
+        "states" => "1"
+    ];
+    echo  json_encode($response);
+}
 
 
