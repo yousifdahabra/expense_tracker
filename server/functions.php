@@ -38,7 +38,7 @@ if(isset($data['submit_login_form'])){
 
     }
 }
-if(isset($data['submit_transaction_form']) && isset($data['is_edit']) ){
+if(isset($data['submit_transaction_form']) && isset($data['code']) ){
     $code = $data['code'];
     $amount = $data['amount'];
     $date = $data['date'];
@@ -46,12 +46,13 @@ if(isset($data['submit_transaction_form']) && isset($data['is_edit']) ){
     $note = $data['note'];
     $user_login_id = $_SESSION['login_id'];
 
-    if($data['is_edit'] == 0){
+    if($data['code'] == 0){
         $insert_transaction = $conection->prepare("insert into transactions_tbl(code,amount,date,transaction_type,note,user_login_id) values('$code','$amount','$date','$transaction_type','$note','$user_login_id') ");
         $insert_transaction->execute();
 
         $response = [
-            "message" => "true"
+            "message" => "insert",
+            'data' => $data,
         ];
         echo  json_encode($response)  ;
 
@@ -60,8 +61,13 @@ if(isset($data['submit_transaction_form']) && isset($data['is_edit']) ){
         $response = [
             "message" => "Please fill data "
         ];
-        echo  json_encode($response)  ;
+        $update_transaction = $conection->prepare("update transactions_tbl set amount = '$amount',date='$date',transaction_type='$transaction_type',note='$note' where code='$code' ");
+        $update_transaction->execute();
 
+        $response = [
+            "message" => "update"
+        ];
+        echo  json_encode($response)  ;
     }
 }
 if(isset($data['get_transactions'])){

@@ -127,8 +127,8 @@ const update_table_wait = (transactions) =>{
             <td>${transaction.note}</td>
             <td>${transaction.date}</td>
             <td>
-                <button data-id="${transaction.id}" data-note="${transaction.note}" data-transaction_type="${transaction.transaction_type}" data-date="${transaction.date}" data-amount="${transaction.amount}" class="edit-btn view">Edit</button>  
-                <button data-id="${transaction.id}" class="delete-btn view"  >Delete</button>
+                <button data-id="${transaction.code}" data-note="${transaction.note}" data-transaction_type="${transaction.transaction_type}" data-date="${transaction.date}" data-amount="${transaction.amount}" class="edit-btn view">Edit</button>  
+                <button data-id="${transaction.code}" class="delete-btn view"  >Delete</button>
             </td>
         </tr>
         `;
