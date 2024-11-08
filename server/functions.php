@@ -11,7 +11,23 @@ if(isset($data['submit_login_form'])){
         $password = $data['password'];
         
 
-        $check_user = $conection->prepare("Select * from users where username=$username");
+        $check_user_query = $conection->prepare("Select * from users ");
+        $check_user_query->execute();
+        $check_user = $check_user_query->get_result();
+        if($check_user->num_rows == 0){
+            $inser_user = $conection->prepare("insert into users(username,password) values('$username','$password') ");
+            $inser_user->execute();
+
+            $_SESSION['login_id'] = $inser_user->insert_id;
+    
+        }else{
+            $user_id = $check_user->fetch_assoc()['user_id'];
+            $_SESSION['login_id'] = $user_id;
+        }
+        $response = [
+            "message" => "true"
+        ];
+        echo  json_encode($response)  ;
 
         
     }else{

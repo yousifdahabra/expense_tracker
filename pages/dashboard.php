@@ -157,6 +157,7 @@
         </div>
     </div>
 
+    <script src="../js/function.js"></script>
 
     <script src="../js/dashboard/transaction.js"></script>
     <script src="../js/dashboard/event.js"></script>
