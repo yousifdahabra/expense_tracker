@@ -38,7 +38,7 @@
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="User Name">User Name</label>
-                    <input id="user_name" type="text"/>
+                    <input id="username" type="text"/>
                 </div>
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="Password">Password</label>
