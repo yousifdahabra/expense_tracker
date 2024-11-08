@@ -64,3 +64,32 @@ if(isset($data['submit_transaction_form']) && isset($data['is_edit']) ){
 
     }
 }
+if(isset($data['get_transactions'])){
+
+    
+
+        $get_transactions_query = $conection->prepare("Select * from transactions_tbl ");
+        $get_transactions_query->execute();
+        $get_transactions = $get_transactions_query->get_result();
+        if($get_transactions->num_rows == 0){
+            $transaction_array = [];
+            while($transaction = $get_transactions->fetch_assoc()){
+                $transaction_array[] = $transaction;
+            }
+            echo json_encode($transaction_array);
+
+            $response = [
+                "message" => "true"
+            ];
+    
+        }else{
+            $response = [
+                "message" => "empty transaction"
+            ];
+            echo  json_encode($response)  ;
+
+        }
+
+        
+    
+}

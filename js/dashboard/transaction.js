@@ -73,7 +73,9 @@ const empty_form = () =>{
 
 const update_table = () =>{
     
-    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    const transactions = get_transaction() || [];
+
+
     if(filter_options['price_filter'] != ''){
         if(filter_options['price_filter'] == 'ascending'){
             transactions.sort((a, b) => a.amount - b.amount)
