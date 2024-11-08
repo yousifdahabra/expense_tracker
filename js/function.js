@@ -1,4 +1,7 @@
 const add_transaction = async (data) => {
+    console.log('data')
+    console.log(data)
+
     const post_method = await axios({
         method: 'post',
         url: 'http://localhost/expense_tracker/server/functions.php',

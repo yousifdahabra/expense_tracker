@@ -7,7 +7,7 @@ const table_body = document.getElementById("table_body");
 const delete_form_model = document.getElementById("delete_form_model");
 const close_delete_form_btn = document.getElementById("close_delete_form_btn");
 const submit_delete_form = document.getElementById("submit_delete_form");
-const is_edit = document.getElementById("is_edit");
+const transaction_id  = document.getElementById("transaction_id ");
 
 const incomes_element = document.getElementById("incomes");
 const expenses_element = document.getElementById("expenses");
@@ -52,7 +52,7 @@ const edit_table_event = () =>{
             const date = event.target.getAttribute('data-date');
             const transaction_type = event.target.getAttribute('data-transaction_type');
 
-            is_edit.value=id;
+            transaction_id .value=id;
             document.getElementById("amount").value = amount;
             document.getElementById("date").value = date;
             document.getElementById("note").value = note;
@@ -64,7 +64,7 @@ const edit_table_event = () =>{
 }
 
 const empty_form = () =>{
-    document.getElementById("is_edit").value = 0
+    document.getElementById("transaction_id ").value = 0
     document.getElementById("amount").value = 0;
     document.getElementById("date").value = '';
     document.getElementById("note").value = '';
@@ -78,9 +78,10 @@ const update_table = async  () =>{
 }
 
 const update_table_wait = (transactions) =>{
-    console.log('transactions')
-    console.log(transactions)
 
+    if(transactions.length <= 0){
+        return 
+    }
     if(filter_options['price_filter'] != ''){
         if(filter_options['price_filter'] == 'ascending'){
             transactions.sort((a, b) => a.amount - b.amount)
@@ -120,15 +121,15 @@ const update_table_wait = (transactions) =>{
         }
         body+=`
         <tr class="${transaction.transaction_type}_style" >
-            <td>${transaction.code}</td>
+            <td>${transaction.transaction_id}</td>
             <td>${transaction.amount} $</td>
             <td>${total_balance} $</td>
             <td>${transaction.transaction_type}</td>
             <td>${transaction.note}</td>
             <td>${transaction.date}</td>
             <td>
-                <button data-id="${transaction.code}" data-note="${transaction.note}" data-transaction_type="${transaction.transaction_type}" data-date="${transaction.date}" data-amount="${transaction.amount}" class="edit-btn view">Edit</button>  
-                <button data-id="${transaction.code}" class="delete-btn view"  >Delete</button>
+                <button data-id="${transaction.transaction_id}" data-note="${transaction.note}" data-transaction_type="${transaction.transaction_type}" data-date="${transaction.date}" data-amount="${transaction.amount}" class="edit-btn view">Edit</button>  
+                <button data-id="${transaction.transaction_id}" class="delete-btn view"  >Delete</button>
             </td>
         </tr>
         `;
