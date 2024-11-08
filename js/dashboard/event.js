@@ -28,14 +28,8 @@ submit_form.addEventListener("click", async () => {
 });
 
 submit_delete_form.addEventListener("click",async () => {
-    const delete_id_code = document.getElementById("delete_id").value || 0;
-    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
-    transactions.forEach((transaction, index) => {
-        if(transaction.transaction_id == delete_id_code){
-            transactions.splice(index, 1);
-        }
-    });
-    localStorage.setItem('transactions', JSON.stringify(transactions));
+    const transaction_id = document.getElementById("delete_id").value || 0;
+    await delete_transaction(transaction_id);
     await update_table();
     delete_form_model.style.display = "none";
 });

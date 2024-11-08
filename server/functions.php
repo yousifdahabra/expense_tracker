@@ -98,3 +98,14 @@ if(isset($data['get_transactions'])){
         
     
 }
+if(isset($data['delete_transactions'])){
+    $transaction_id= $data['transaction_id'];
+
+    $delete_transactions_query = $conection->prepare("delete FROM `transactions_tbl` where transaction_id = '$transaction_id' ");
+    $delete_transactions_query->execute();
+    $response = [
+        "message" => "delete"
+    ];
+    echo  json_encode($response)  ;
+
+}
