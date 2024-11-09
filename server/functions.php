@@ -4,23 +4,21 @@ include "conection.php";
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
-$request_body = file_get_contents('php://input');
-$data = json_decode($request_body, true);
 
-if(isset($data['submit_login_form'])){
-    if($data['username'] != '' && $data['password'] != ''){
-        $username = $data['username'];
-        $password = $data['password'];
+if(isset($_POST['submit_login_form'])){
+    if($_POST['username'] != '' && $_POST['password'] != ''){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
         $hash = password_hash($password,PASSWORD_DEFAULT);
         
 
-        $check_user_query = $conection->prepare("Select * from users where username=?  ");
+        $check_user_query = $conection->prepare("Select * from users_tbl where username=?  ");
         $check_user_query->bind_param('s',$username);
         $check_user_query->execute();
         $check_user = $check_user_query->get_result();
         if($check_user->num_rows == 0){
-            $inser_user = $conection->prepare("insert into users(username,password) values(?,?) ");
+            $inser_user = $conection->prepare("insert into users_tbl(username,password) values(?,?) ");
             $inser_user->bind_param("ss",$username,$hash);
             $inser_user->execute();
 
@@ -57,13 +55,13 @@ if(isset($data['submit_login_form'])){
 
     }
 }
-if(isset($data['submit_transaction_form'])   ){
-    $amount = $data['amount'];
-    $date = $data['date'];
-    $transaction_type = $data['transaction_type'];
-    $note = $data['note'];
+if(isset($_POST['submit_transaction_form'])   ){
+    $amount = $_POST['amount'];
+    $date = $_POST['date'];
+    $transaction_type = $_POST['transaction_type'];
+    $note = $_POST['note'];
     $user_login_id = isset($_SESSION['login_id']) ? $_SESSION['login_id'] : 1;
-    $transaction_id= $data['transaction_id'];
+    $transaction_id= $_POST['transaction_id'];
     if($transaction_id == 0){
         $insert_transaction = $conection->prepare("insert into transactions_tbl(amount,date,transaction_type,note,user_login_id) values(?,?,?,?,?) ");
         $insert_transaction->bind_param("ssssi",$amount,$date,$transaction_type,$note,$user_login_id);
@@ -71,8 +69,7 @@ if(isset($data['submit_transaction_form'])   ){
         $insert_transaction->execute();
 
         $response = [
-            "message" => "insert",
-            'data' => $data,
+            "message" => "insert"
         ];
         echo  json_encode($response)  ;
 
@@ -89,9 +86,9 @@ if(isset($data['submit_transaction_form'])   ){
         echo  json_encode($response)  ;
     }
 }
-if(isset($data['get_transactions'])){
+if(isset($_POST['get_transactions'])){
 
-        $user_id = $_SESSION['login_id'];
+        $user_id = 12;
         $get_transactions_query = $conection->prepare("SELECT * FROM `transactions_tbl` where user_login_id = ? ");
         $get_transactions_query->bind_param("i",$user_id);
 
@@ -115,8 +112,8 @@ if(isset($data['get_transactions'])){
         
     
 }
-if(isset($data['delete_transactions'])){
-    $transaction_id= $data['transaction_id'];
+if(isset($_POST['delete_transactions'])){
+    $transaction_id= $_POST['transaction_id'];
 
     $delete_transactions_query = $conection->prepare("delete FROM `transactions_tbl` where transaction_id = ? ");
     $delete_transactions_query->bind_param("i",$transaction_id);
@@ -128,7 +125,7 @@ if(isset($data['delete_transactions'])){
     echo  json_encode($response)  ;
 
 }
-if(isset($data['check_login'])){
+if(isset($_POST['check_login'])){
 
     
     if(isset($_SESSION['login_id'] )){
@@ -144,7 +141,7 @@ if(isset($data['check_login'])){
     }
 
 }
-if(isset($data['check_logout'])){
+if(isset($_POST['check_logout'])){
     session_destroy();
     $response = [
         "states" => "1"
