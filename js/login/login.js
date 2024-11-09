@@ -18,6 +18,15 @@ const post_login = async () => {
     }).then(function (response) {
         console.log('response')
         console.log(response)
+        if(response.data.states === '1'){
+        setTimeout(
+            ()=>{
+                window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
+            }
+        ),
+            2000
+        }
+        message_alert.innerHTML = response.data.messages
 
     });
 }
