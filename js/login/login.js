@@ -16,18 +16,10 @@ const post_login = async () => {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).then(function (response) {
-        console.log('response')
-        console.log(response)
         if(response.data.states === '1'){
-        setTimeout(
-            ()=>{
-                window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
-            }
-        ),
-            2000
+            window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
         }
         message_alert.innerHTML = response.data.messages
-
     });
 }
 

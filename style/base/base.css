@@ -33,3 +33,7 @@ body{
 .show{
     display: block !important;
 }
+.alert{
+    color: white;
+    background-color: red;
+}

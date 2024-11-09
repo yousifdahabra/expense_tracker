@@ -37,7 +37,7 @@
         <div class="login-modal-content flex flex-direction-column align-items-center justify-content-center flex-wrap">
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
-                    <label id="message_alert"></label>
+                    <label class="alert" id="message_alert"></label>
                 </div>
 
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
