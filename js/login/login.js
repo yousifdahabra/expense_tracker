@@ -11,19 +11,13 @@ const post_login = async () => {
             submit_login_form: 'true',
             username:username,
             password:password,
+        },
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
         }
     }).then(function (response) {
         console.log('response')
         console.log(response)
-        if(response.data.states === '1'){
-        setTimeout(
-            ()=>{
-                window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
-            }
-        ),
-            2000
-        }
-        message_alert.innerHTML = response.data.messages
 
     });
 }

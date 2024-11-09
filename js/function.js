@@ -3,7 +3,10 @@ const add_transaction = async (data) => {
     const post_method = await axios({
         method: 'post',
         url: 'http://localhost/expense_tracker/server/functions.php',
-        data: data
+        data: data,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
     });
 }
 const get_transaction = async (transaction_id = 0) => {
@@ -15,6 +18,9 @@ const get_transaction = async (transaction_id = 0) => {
             data: {
                 get_transactions: 'true',
                 transaction_id :0,
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
           })  
           return post_method.data;  
@@ -33,6 +39,9 @@ const delete_transaction = async (transaction_id = 0) => {
             data: {
                 delete_transactions: 'true',
                 transaction_id :transaction_id,
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
           })  
           return post_method.data;  
@@ -49,6 +58,9 @@ const check_login = async () => {
             url: 'http://localhost/expense_tracker/server/functions.php',
             data: {
                 check_login: 'true',
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
           })  
           
@@ -68,6 +80,9 @@ const check_logout = async () => {
             url: 'http://localhost/expense_tracker/server/functions.php',
             data: {
                 check_logout: 'true',
+            },
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
           })  
           
