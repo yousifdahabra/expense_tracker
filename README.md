@@ -12,4 +12,4 @@ After the update, users can securely store their data in the database, allowing 
 
 ## Screenshots
 ![alt text](https://github.com/yousifdahabra/expense_tracker/blob/main/screenshots/home.png?raw=true)
-![alt text](https://github.com/yousifdahabra/expense_tracker/blob/main/screenshots/home2.png?raw=true)
+![alt text](https://github.com/yousifdahabra/expense_tracker/blob/main/screenshots/home 2.png?raw=true)
