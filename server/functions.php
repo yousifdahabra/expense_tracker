@@ -25,6 +25,7 @@ if(isset($_POST['submit_login_form'])){
             $_SESSION['login_id'] = $inser_user->insert_id;
             $response = [
                 "states" => "1",
+                "states" => "Account Successfully created",
             ];
     
         }else{
@@ -35,11 +36,14 @@ if(isset($_POST['submit_login_form'])){
                 $_SESSION['login_id'] = $user_id;
     
                 $response = [
-                    "states" => "1"
+                    "states" => "1",
+                    "states" => "Login Successfully",
+
                 ];
             }else{
                 $response = [
-                    "states" => "0"
+                    "states" => "0",
+                    "states" => "Login failed: Incorrect password",
                 ];
             }
 
