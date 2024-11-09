@@ -37,6 +37,10 @@
         <div class="login-modal-content flex flex-direction-column align-items-center justify-content-center flex-wrap">
             <div class="form flex flex-direction-column">
                 <div class=" flex flex-wrap-nowrap align-items-start  form-group">
+                    <label id="message_alert"></label>
+                </div>
+
+                <div class=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="User Name">User Name</label>
                     <input id="username" type="text"/>
                 </div>

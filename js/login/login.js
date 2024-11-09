@@ -1,4 +1,6 @@
 const submit_login_form = document.getElementById('submit_login_form')
+const message_alert = document.getElementById('message_alert')
+
 const post_login = async () => {
     const username = document.getElementById('username').value
     const password = document.getElementById('password').value
@@ -11,11 +13,18 @@ const post_login = async () => {
             password:password,
         }
     }).then(function (response) {
+        console.log('response')
+        console.log(response)
         if(response.data.states === '1'){
-            window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
-        }else[
-            alert('wrong password')
-        ]
+        setTimeout(
+            ()=>{
+                window.location.href = "http://localhost/expense_tracker/pages/dashboard.php";
+            }
+        ),
+            2000
+        }
+        message_alert.innerHTML = response.data.messages
+
     });
 }
 

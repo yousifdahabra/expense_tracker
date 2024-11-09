@@ -1,10 +1,10 @@
 <?php
-
-include "conection.php";
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('Access-Control-Allow-Headers: Content-Type');
 
+
+include "conection.php";
 if(isset($_POST['submit_login_form'])){
     if($_POST['username'] != '' && $_POST['password'] != ''){
         $username = $_POST['username'];
@@ -25,7 +25,7 @@ if(isset($_POST['submit_login_form'])){
             $_SESSION['login_id'] = $inser_user->insert_id;
             $response = [
                 "states" => "1",
-                "states" => "Account Successfully created",
+                "messages" => "Account Successfully created",
             ];
     
         }else{
@@ -37,13 +37,13 @@ if(isset($_POST['submit_login_form'])){
     
                 $response = [
                     "states" => "1",
-                    "states" => "Login Successfully",
+                    "messages" => "Login Successfully",
 
                 ];
             }else{
                 $response = [
                     "states" => "0",
-                    "states" => "Login failed: Incorrect password",
+                    "messages" => "Login failed: Incorrect password",
                 ];
             }
 
