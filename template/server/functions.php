@@ -92,9 +92,10 @@ if(isset($_POST['submit_transaction_form'])   ){
 }
 if(isset($_POST['get_transactions'])){
 
-        $user_id = $_SESSION['login_id'];
-        $get_transactions_query = $conection->prepare("SELECT * FROM `transactions_tbl` where user_login_id = ? ");
-        $get_transactions_query->bind_param("i",$user_id);
+        // $user_id = $_SESSION['login_id'];
+        // $get_transactions_query = $conection->prepare("SELECT * FROM `transactions_tbl` where user_login_id = ? ");
+        // $get_transactions_query->bind_param("i",$user_id);
+        $get_transactions_query = $conection->prepare("SELECT * FROM `transactions_tbl`  ");
 
         $get_transactions_query->execute();
         $get_transactions = $get_transactions_query->get_result();

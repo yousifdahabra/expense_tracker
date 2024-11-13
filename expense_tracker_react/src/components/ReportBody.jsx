@@ -1,8 +1,31 @@
 
 import React from "react";
+import axios from "axios";
 
 
 const ReportBody = () =>{
+    const get_transaction = async (transaction_id = 0) => {
+
+        try{
+            const post_method = await axios({
+                method: 'post',
+                url: 'http://localhost/expense_tracker/template/server/functions.php',
+                data: {
+                    get_transactions: 'true',
+                    transaction_id :0,
+                },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+              })  
+              console.log(post_method)
+              return post_method.data;  
+      
+        }catch (error) {
+            return [];  
+        }
+    }
+    get_transaction()
     return (
         <div className="report-body">
         <div className="report-btn flex flex-wrap align-content-center justify-content-center align-items-flex-end">
