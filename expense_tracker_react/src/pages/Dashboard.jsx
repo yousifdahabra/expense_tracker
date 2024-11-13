@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import NavContainer from "../components/NavContainer";
 import Boxes from "../components/Boxes";
+import ReportHeader from "../components/ReportHeader";
 
 const Dashboard = () => {
     return (
@@ -11,6 +12,9 @@ const Dashboard = () => {
                 <NavContainer/>
                 <div class="main">
                     <Boxes/>
+                    <div class="report-container">
+                        <ReportHeader/>
+                    </div>
                 </div>
             </div>
         </div>
