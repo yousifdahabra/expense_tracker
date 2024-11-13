@@ -2,15 +2,15 @@ import React from "react";
 
 const NavContainer = () => {
     return (
-    <div class="nav-container">
-        <nav class="flex flex-direction-column justify-content-space-between second-background-color nav">
-        <div class="nav-options">
-                <a href="#" class="nav-option active">
-                    <i class="fa fa-tachometer" aria-hidden="true"></i>
+    <div className="nav-container">
+        <nav className="flex flex-direction-column justify-content-space-between second-background-color nav">
+        <div className="nav-options">
+                <a href="#" className="nav-option active">
+                    <i className="fa fa-tachometer" aria-hidden="true"></i>
                     <h3> Dashboard</h3>
                 </a>
-                <a id="logout_btn" href="#" class="nav-option ">
-                    <i class="fa fa-tachometer" aria-hidden="true"></i>
+                <a id="logout_btn" href="#" className="nav-option ">
+                    <i className="fa fa-tachometer" aria-hidden="true"></i>
                     <h3>Logout</h3>
                 </a>
 

@@ -9,16 +9,17 @@ const Dashboard = () => {
     return (
         <div>
             <Header/>
-            <div class="flex main-container">
+            <div className="flex main-container">
                 <NavContainer/>
-                <div class="main">
+                <div className="main">
                     <Boxes/>
-                    <div class="report-container">
+                    <div className="report-container">
                         <ReportHeader/>
                         <ReportBody/>
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 }
