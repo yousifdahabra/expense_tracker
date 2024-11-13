@@ -5,26 +5,18 @@ import axios from "axios";
 
 const ReportBody = () =>{
     const get_transaction = async (transaction_id = 0) => {
+        const data = new FormData();
+        data.append("get_transactions", 'true');
+        data.append("transaction_id", 0);
+        axios
+        .post("http://localhost/expense_tracker/template/server/functions.php",data,)
+        .then((res) => {
+                console.log(res.data)
+         })
+        .catch((error) => { 
+         });
+     }
 
-        try{
-            const post_method = await axios({
-                method: 'post',
-                url: 'http://localhost/expense_tracker/template/server/functions.php',
-                data: {
-                    get_transactions: 'true',
-                    transaction_id :0,
-                },
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-              })  
-              console.log(post_method)
-              return post_method.data;  
-      
-        }catch (error) {
-            return [];  
-        }
-    }
     get_transaction()
     return (
         <div className="report-body">
