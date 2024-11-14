@@ -7,13 +7,12 @@ const ReportBody = () =>{
     const [transaction, setTransaction] = useState([]);
     const deletTransaction = async (transaction_id) => {
         const data = new FormData();
-        data.append("delete_transaction", 'true');
+        data.append("delete_transactions", 'true');
         data.append("transaction_id", transaction_id);
         axios
-        .post("http://localhost/expense_tracker/template/server/functions.php",data,)
+        .post("http://localhost/expense_tracker/template/server/functions.php",data)
         .then((res) => {
-            
-            console.log(res)
+            getTransaction()
          })
         .catch((error) => { 
          });
@@ -89,7 +88,7 @@ const ReportBody = () =>{
                                     console.log(t.transaction_id)
                                     
                                      deletTransaction(t.transaction_id)
-                                
+                                     
                                 }}
                                   
                                 
