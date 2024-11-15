@@ -1,8 +1,9 @@
 import React from "react";
 
-const FormModel = ({openAddForm}) =>{
+const FormModel = ({isOpen,isClose}) =>{
+
     return (
-        <div id="form_model" className={`moda ${openAddForm ? "":"hidden"}`} >
+        <div id="form_model" className={`modal ${isOpen ? "": "hidden" }`} >
         <div className="modal-content">
             <input type="hidden" id="transaction_id" value="0"/>
             <div className="form flex flex-direction-column">
@@ -28,7 +29,7 @@ const FormModel = ({openAddForm}) =>{
 
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
                     <button id="submit_form" className="view" type="button">Submit</button>
-                    <button id="close_form_model" className="view" type="button">Close</button>
+                    <button onClick={isClose} id="close_form_model" className="view" type="button">Close</button>
                 </div>
             </div>
         </div>

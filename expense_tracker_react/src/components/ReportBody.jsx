@@ -85,7 +85,6 @@ const ReportBody = () =>{
                             <td>
                                 <button className="delete-btn view"
                                 onClick={() => {
-                                    console.log(t.transaction_id)
                                     
                                      deletTransaction(t.transaction_id)
                                      

@@ -9,10 +9,13 @@ import DeleteModel from "../components/DeleteModel";
 
 const Dashboard = () => {
 
-    const [openAddForm, setopenAddForm] = useState(false);
+    const [isOpenAdd, setisOpenAdd] = useState(false);
 
     const triggerAddForm = () =>{
-        setopenAddForm((isOpen))
+        setisOpenAdd((isOpenAdd)=> !isOpenAdd)
+    }
+    const triggerCloseForm = () =>{
+        setisOpenAdd(false)
     }
 
     return (
@@ -23,12 +26,12 @@ const Dashboard = () => {
                 <div className="main">
                     <Boxes/>
                     <div className="report-container">
-                        <ReportHeader />
-                        <ReportBody triggerAdd={triggerAddForm} />
+                        <ReportHeader triggerAdd={triggerAddForm} />
+                        <ReportBody  />
                     </div>
                 </div>
             </div>
-            <FormModel isOpen={openAddForm} />
+            <FormModel isOpen={isOpenAdd} isClose={triggerCloseForm} />
             <DeleteModel/>
         </>
     );
