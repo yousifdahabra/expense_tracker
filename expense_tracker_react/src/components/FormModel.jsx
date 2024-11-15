@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 const FormModel = ({isOpen,isClose}) =>{
-
+    const [formData,setFormData] = useState({
+        'amount':0,
+        'date':'0000-00-00',
+        'transaction_type':'expenses',
+        'note':'',
+        
+    })
     return (
         <div id="form_model" className={`modal ${isOpen ? "": "hidden" }`} >
         <div className="modal-content">
@@ -9,26 +15,61 @@ const FormModel = ({isOpen,isClose}) =>{
             <div className="form flex flex-direction-column">
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="amount">Amount</label>
-                    <input id="amount" type="text"/>
+                    <input 
+                    onChange={(e)=>{
+                        setFormData({
+                            ...formData,
+                            amount:e.target.value
+                        })
+                    }}
+                    type="text"/>
                 </div>
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="date">Date</label>
-                    <input id="date" type="date"/>
+                    <input 
+                    onChange={(e)=>{
+                        setFormData({
+                            ...formData,
+                            date:e.target.value
+                        })
+                    }}
+                    
+                    type="date"/>
                 </div>
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
                     <label for="type">Select Type</label>
-                    <select id="transaction_type">
+                    <select 
+                    
+                    onChange={(e)=>{
+                        setFormData({
+                            ...formData,
+                            transaction_type:e.target.value
+                        })
+                    }}
+
+                    >
                         <option value="incomes">Incomes</option>
                         <option value="expenses">Expenses</option>
                     </select>
                 </div>
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
-                    <label for="date">Note</label>
-                    <textarea id="note"></textarea>
+                    <label for="note">Note</label>
+                    <textarea 
+                    onChange={(e)=>{
+                        setFormData({
+                            ...formData,
+                            note:e.target.value
+                        })
+                    }}
+                    
+                    ></textarea>
                 </div>
 
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
-                    <button id="submit_form" className="view" type="button">Submit</button>
+                    <button onClick={()=>{
+                            console.log(formData)
+                    }} 
+                    className="view" type="button">Submit</button>
                     <button onClick={isClose} id="close_form_model" className="view" type="button">Close</button>
                 </div>
             </div>
