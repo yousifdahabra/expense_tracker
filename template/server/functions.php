@@ -153,3 +153,5 @@ if(isset($_POST['check_logout'])){
     ];
     echo  json_encode($response);
 }
+
+

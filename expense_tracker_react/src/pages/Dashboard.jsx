@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import NavContainer from "../components/NavContainer";
 import Boxes from "../components/Boxes";
@@ -8,6 +8,9 @@ import FormModel from "../components/FormModel";
 import DeleteModel from "../components/DeleteModel";
 
 const Dashboard = () => {
+
+    const [openAddForm, setopenAddForm] = useState(false);
+
     return (
         <>
             <Header/>
@@ -16,12 +19,12 @@ const Dashboard = () => {
                 <div className="main">
                     <Boxes/>
                     <div className="report-container">
-                        <ReportHeader/>
-                        <ReportBody/>
+                        <ReportHeader />
+                        <ReportBody  />
                     </div>
                 </div>
             </div>
-            <FormModel/>
+            <FormModel isOpen={openAddForm} />
             <DeleteModel/>
         </>
     );

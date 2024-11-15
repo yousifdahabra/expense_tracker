@@ -1,8 +1,8 @@
 import React from "react";
 
-const FormModel = () =>{
+const FormModel = ({openAddForm}) =>{
     return (
-        <div id="form_model" className="modal hidden">
+        <div id="form_model" className={`moda ${openAddForm ? "":"hidden"}`} >
         <div className="modal-content">
             <input type="hidden" id="transaction_id" value="0"/>
             <div className="form flex flex-direction-column">
