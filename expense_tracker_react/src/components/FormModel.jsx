@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const FormModel = ({isOpen,isClose}) =>{
     const [formData,setFormData] = useState({
@@ -6,8 +7,8 @@ const FormModel = ({isOpen,isClose}) =>{
         'date':'0000-00-00',
         'transaction_type':'expenses',
         'note':'',
-        
     })
+
     return (
         <div id="form_model" className={`modal ${isOpen ? "": "hidden" }`} >
         <div className="modal-content">
@@ -67,7 +68,19 @@ const FormModel = ({isOpen,isClose}) =>{
 
                 <div className=" flex flex-wrap-nowrap align-items-start  form-group">
                     <button onClick={()=>{
-                            console.log(formData)
+                            formData['submit_transaction_form'] = true;
+                            formData['transaction_id'] = 0;
+                            
+                            axios
+                            .post("http://localhost/expense_tracker/template/server/functions.php",formData)
+                            .then((res) => {
+                                console.log(res)
+                            })
+                            .catch((error) => { 
+                                console.log(error)
+
+                             });
+                    
                     }} 
                     className="view" type="button">Submit</button>
                     <button onClick={isClose} id="close_form_model" className="view" type="button">Close</button>
