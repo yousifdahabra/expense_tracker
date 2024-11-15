@@ -1,5 +1,5 @@
 import React from "react";
-const ReportHeader =() => {
+const ReportHeader =({triggerAdd}) => {
 
     return (
     <div className="report-header">

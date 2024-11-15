@@ -11,6 +11,10 @@ const Dashboard = () => {
 
     const [openAddForm, setopenAddForm] = useState(false);
 
+    const triggerAddForm = () =>{
+        setopenAddForm((isOpen))
+    }
+
     return (
         <>
             <Header/>
@@ -20,7 +24,7 @@ const Dashboard = () => {
                     <Boxes/>
                     <div className="report-container">
                         <ReportHeader />
-                        <ReportBody  />
+                        <ReportBody triggerAdd={triggerAddForm} />
                     </div>
                 </div>
             </div>
